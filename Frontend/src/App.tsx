@@ -10,14 +10,7 @@ function App() {
 
 
 
-
-      
-
-
-
-
-
-        Header
+         Header
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, commodi?
       </header>
       <div className='border'>My Pak Fishing App</div>
