@@ -6,6 +6,12 @@ function App() {
   return (
     <div className='border flex flex-col h-screen justify-between'>
       <header className='border'>
+
+
+
+
+
+        
         Header
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, commodi?
       </header>
