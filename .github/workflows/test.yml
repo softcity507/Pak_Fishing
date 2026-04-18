@@ -14,5 +14,14 @@ jobs:
         with:
           node-version: 20
 
-      - run: npm install
-      - run: npm test 
+      - name: Install and Test Frontend
+        working-directory: ./Frontend
+        run: |
+          npm install
+          npm test
+
+      - name: Install and Test Backend
+        working-directory: ./Backend
+        run: |
+          npm install
+          npm test
