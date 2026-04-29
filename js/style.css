@@ -1,0 +1,747 @@
+
+        *, *::before, *::after {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ocean-deep: #0a2342;
+            --ocean-mid: #0d3b6e;
+            --aqua: #1fb6c9;
+            --aqua-light: #5dd6e8;
+            --aqua-glow: rgba(31, 182, 201, 0.18);
+            --sand: #f5f0e8;
+            --white: #ffffff;
+            --text-dark: #0d2b4d;
+            --text-mid: #3a5a7c;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--sand);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* .topbar {
+            background: var(--ocean-deep);
+            color: rgba(255,255,255,0.85);
+            padding: 9px 20px;
+            text-align: center;
+            font-size: 13px;
+            letter-spacing: 0.4px;
+            position: relative;
+            z-index: 200;
+        } */
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 48px;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(10px);
+            position:fixed;
+            width: 100%;
+            top: 0px;
+            z-index: 150;
+            box-shadow: 0 2px 24px rgba(13,43,77,0.07);
+            transition: all 0.35s ease;
+        }
+
+        .navbar.scrolled {
+            background: var(--ocean-mid);
+            top: 0;
+            padding: 12px 48px;
+        }
+
+        .navbar.scrolled .menu a { color: rgba(255,255,255,0.85); }
+        .navbar.scrolled .logo { color: white; }
+        .navbar.scrolled .menu a:hover { color: var(--aqua-light); }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--ocean-deep);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: var(--aqua); }
+
+        .menu { display: flex; align-items: center; gap: 6px; }
+
+        .menu a {
+            padding: 7px 14px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .menu a:not(.btn):hover {
+            background: var(--aqua-glow);
+            color: var(--aqua);
+        }
+
+        .btn {
+            background: var(--aqua);
+            padding: 9px 22px !important;
+            color: white !important;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 14px rgba(31,182,201,0.35);
+            transition: transform 0.2s, box-shadow 0.2s !important;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(31,182,201,0.5) !important;
+        }
+
+        .hero {
+            height: 520px;
+            background: linear-gradient(135deg, rgba(10,35,66,1) 100%, rgba(13,59,110,1) 100%),
+                        url('https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=1600') no-repeat center / cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+            /* margin-top: 96px; */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0; right: 0;
+            height: 80px;
+            background: var(--sand);
+            clip-path: ellipse(55% 100% at 50% 100%);
+        }
+
+    
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--aqua-light);
+        }
+
+        .hero p {
+            font-size: 17px;
+            opacity: 0.85;
+            max-width: 480px;
+        }
+
+        .section {
+            padding: 70px 60px;
+            background: var(--sand);
+            text-align: center;
+        }
+
+        .section h4 {
+            color: var(--aqua);
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            font-weight: 900;
+            color: var(--ocean-deep);
+            margin-bottom: 16px;
+        }
+
+        .section p {
+            color: var(--text-mid);
+            font-size: 16px;
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .readmore {
+            display: inline-block;
+            margin-top: 28px;
+            padding: 12px 32px;
+            background: var(--ocean-deep);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+            transition: all 0.25s;
+            box-shadow: 0 4px 16px rgba(10,35,66,0.25);
+        }
+
+        .readmore:hover {
+            background: var(--aqua);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(31,182,201,0.4);
+        }
+
+        
+        .cards-section {
+            padding: 80px 48px;
+            background: linear-gradient(180deg, #e6f2f5 0%, #d4ecf2 100%);
+            position: relative;
+        }
+
+        .cards-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--ocean-deep), var(--aqua), var(--aqua-light), var(--aqua));
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .section-header .tag {
+            display: inline-block;
+            background: var(--aqua);
+            color: white;
+            padding: 5px 18px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--ocean-deep);
+            margin-bottom: 14px;
+            line-height: 1.15;
+        }
+
+        .section-header p {
+            color: var(--text-mid);
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .fish-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(10,35,66,0.1);
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .fish-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(10,35,66,0.18);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            z-index: 10;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        .badge-fresh { background: #00c97a; color: white; }
+        .badge-popular { background: var(--aqua); color: white; }
+        .badge-premium { background: #e8a020; color: white; }
+        .badge-new { background: #e84393; color: white; }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .fish-card:hover .card-img {
+            transform: scale(1.06);
+        }
+
+        .card-img-wrap {
+            overflow: hidden;
+            position: relative;
+            height: 200px;
+        }
+
+        .card-img-wrap::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 60px;
+            background: linear-gradient(transparent, rgba(10,35,66,0.12));
+            pointer-events: none;
+        }
+
+        .card-body {
+            padding: 22px 22px 20px;
+        }
+
+        .card-category {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--aqua);
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--ocean-deep);
+            margin-bottom: 8px;
+            line-height: 1.25;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-mid);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-bottom: 18px;
+        }
+
+        .tag-pill {
+            background: #eaf6f9;
+            color: var(--ocean-mid);
+            padding: 4px 11px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #eef4f6;
+            padding-top: 16px;
+        }
+
+        .card-price {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-label {
+            font-size: 11px;
+            color: #8ba3b8;
+            font-weight: 500;
+        }
+
+        .price-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--ocean-deep);
+            line-height: 1.1;
+        }
+
+        .price-unit {
+            font-size: 13px;
+            color: var(--text-mid);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        .card-cta {
+            background: var(--ocean-deep);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-family: 'DM Sans', sans-serif;
+            letter-spacing: 0.3px;
+        }
+
+        .card-cta:hover {
+            background: var(--aqua);
+            transform: scale(1.05);
+            box-shadow: 0 4px 14px rgba(31,182,201,0.4);
+        }
+
+        .card-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 12px;
+        }
+
+        .stars { color: #f5a623; font-size: 13px; letter-spacing: 1px; }
+        .rating-count { font-size: 12px; color: #8ba3b8; }
+
+        .fish-card.featured {
+            grid-column: span 2;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .fish-card.featured .card-img-wrap {
+            width: 45%;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .fish-card.featured .card-img {
+            height: 100%;
+        }
+
+        .fish-card.featured .card-body {
+            padding: 30px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .fish-card.featured .card-title { font-size: 28px; margin-bottom: 10px; }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 50px 48px;
+            background: var(--ocean-deep);
+        }
+
+        .stat-item {
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--aqua-light);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: rgba(255,255,255,0.65);
+            margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .fish-card {
+            animation: fadeUp 0.55s ease both;
+        }
+
+        .fish-card:nth-child(1) { animation-delay: 0.05s; }
+        .fish-card:nth-child(2) { animation-delay: 0.15s; }
+        .fish-card:nth-child(3) { animation-delay: 0.25s; }
+        .fish-card:nth-child(4) { animation-delay: 0.35s; }
+        .fish-card:nth-child(5) { animation-delay: 0.45s; }
+        .fish-card:nth-child(6) { animation-delay: 0.55s; }
+
+        .toast {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: var(--ocean-deep);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 8px 30px rgba(10,35,66,0.35);
+            z-index: 999;
+            transform: translateY(80px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast-icon { font-size: 18px; }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 14px 20px; }
+            .section { padding: 50px 24px; }
+            .cards-section { padding: 60px 20px; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .fish-card.featured { grid-column: span 1; flex-direction: column; }
+            .fish-card.featured .card-img-wrap { width: 100%; height: 200px; }
+            .stats-row { flex-wrap: wrap; gap: 28px; padding: 40px 24px; }
+            .section-header h2 { font-size: 32px; }
+        }
+
+        .footer{
+background:#0d3b6e;
+color:white;
+padding:60px 10%;
+font-family:Arial;
+}
+
+.footer-logo{
+text-align:center;
+margin-bottom:40px;
+font-size:28px;
+font-weight:bold;
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:40px;
+}
+
+.footer-col h3{
+margin-bottom:20px;
+}
+
+/*.footer-col p{
+font-size:14px;
+line-height:1.6;
+}*/
+
+.footer-col ul{
+list-style:none;
+padding:0;
+}
+
+.footer-col ul li{
+margin-bottom:10px;
+cursor:pointer;
+}
+
+.footer-col ul li:hover{
+color:#cfe88a;
+}
+
+.subscribe-box{
+display:flex;
+margin-top:20px;
+}
+
+.subscribe-box input{
+flex:1;
+padding:10px;
+border:none;
+}
+
+.subscribe-box button{
+background:#cfe88a;
+border:none;
+padding:10px 20px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.social a{
+display:inline-block;
+width:35px;
+height:35px;
+background:#2d6a4f;
+text-align:center;
+line-height:35px;
+margin-right:10px;
+border-radius:5px;
+color:white;
+text-decoration:none;
+}
+
+.footer-bottom{
+background:#cfe88a;
+color:#083f1f;
+text-align:center;
+padding:15px;
+margin-top:40px;
+font-weight:500;
+}
+/* body{
+font-family:Arial;
+background:#f5f5f5;
+margin:0;
+padding:40px;
+} */
+
+.review-section{
+max-width:1200px;
+margin:auto;
+}
+
+.review-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#eee;
+padding:25px;
+border-radius:10px;
+margin-bottom:30px;
+}
+
+.google-title{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.google-title img{
+width:70px;
+}
+
+.rating{
+font-size:28px;
+font-weight:bold;
+}
+
+.stars{
+color:#ffb400;
+font-size:22px;
+margin-left:10px;
+}
+
+.review-btn{
+background:#2d8cff;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:25px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.review-slider{
+overflow:hidden;
+position:relative;
+}
+
+.review-track{
+display:flex;
+gap:20px;
+transition:transform 0.5s ease;
+}
+
+.review-card{
+min-width:260px;
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.review-user{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:10px;
+}
+
+.review-user img{
+width:40px;
+height:40px;
+border-radius:50%;
+}
+
+.review-name{
+font-weight:bold;
+}
+
+.review-time{
+font-size:12px;
+color:gray;
+}
+
+.review-text{
+margin-top:10px;
+line-height:1.4;
+}
+
+.google-post{
+margin-top:15px;
+font-size:13px;
+color:#4285F4;
+display:flex;
+align-items:center;
+gap:5px;
+}
+
+
+.menu{
+display:flex;
+gap:6px;
+align-items:center;
+}
+
+@media (max-width:991px){
+
+.menu{
+flex-direction:column;
+gap:15px;
+padding-top:15px;
+}
+
+}

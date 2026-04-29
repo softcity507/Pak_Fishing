@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <title>Simple User System</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin-top: 100px;
+            font-family: Arial;
+            text-align: center;
+        }
+        header {
+            background-color: lightblue;
+            padding: 15px;
+            position: relative;
+        }
+        #loggedUser {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-weight: bold;
+        }
+        input {
+            display: block;
+            margin: 10px auto;
+            padding: 8px;
+            width: 200px;
+        }
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="navbar" id="navbar">
+        <div class="logo">Pak<span>Fishing</span></div>
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a>About</a>
+            <a>Wholesales</a>
+            <a>Retail</a>
+            <a>Bacha Fish</a>
+            <a class="btn" id="signupBtn" href="signup.html" >Sign Up</a>
+        </div>
+    </div>
+    <h2>User Registration & Login</h2>
+    <div id="loggedUser"></div>
+</header>
+
+<br>
+
+<input type="text" id="fullName" placeholder="Full Name">
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="registerUser()">Register</button>
+<button onclick="loginUser()">Login</button>
+<button onclick="printUsers()">Print Users</button>
+
+<script>
+// Array to store users
+    const users = [];       // Register Function
+    const registerUser= ()=> {
+        var fullName = document.getElementById("fullName").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        if (fullName === "" || email === "" || password === "") {
+            alert("Please fill all fields");
+            return;  }
+        var user = {
+            id: Math.random(), // unique id
+            fullName: fullName,
+            email: email,
+            password: password,
+            status: "active",
+            createdAt: new Date()};
+            let emailexists=users.find(user =>user.email===email);
+            if(emailexists){
+                alert("Email is already registered");
+                return;
+            }
+        users.push(user);
+       localStorage.setItem("users",JSON.stringify(users))
+
+        alert("Registration Successful");
+        // Clear fields
+        document.getElementById("fullName").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("password").value = "";}
+    // Login Function
+    const loginUser = ()=> {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var foundUser = null;
+        for (var i = 0; i < users.length; i++) {
+            if (users[i].email === email && users[i].password === password) {
+                foundUser = users[i];
+                break;} }
+        if (foundUser !== null) {
+            alert("Login Successful");
+            document.getElementById("loggedUser").innerText = foundUser.fullName;
+        } else {
+            alert("Invalid Credentials");
+        }
+    }
+    // Print Users Function
+    const printUsers = () => {
+        console.log(users);
+    }
+</script>
+
+</body>
+</html>
