@@ -1,32 +1,35 @@
-name: Node Test
+name: MERN CI/CD Pipeline
 
 on: [push]
 
 jobs:
-  test:
+  test-build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Node
+      # Node setup
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Install and Test Frontend
+      # FRONTEND TEST
+      - name: Install & Test Frontend
         working-directory: ./Frontend
         run: |
           npm install
           npm test
 
-      - name: Install and Test Backend
-        working-directory: ./Backend
+      # BACKEND TEST
+      - name: Install & Test Backend
+        working-directory: ./backend
         run: |
           npm install
           npm test
-        # DOCKER BUILD (IMPORTANT)
+
+      # DOCKER BUILD (IMPORTANT)
       - name: Build Docker Images
         run: |
           docker compose build
-          
