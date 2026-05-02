@@ -25,3 +25,8 @@ jobs:
         run: |
           npm install
           npm test
+        # DOCKER BUILD (IMPORTANT)
+      - name: Build Docker Images
+        run: |
+          docker compose build
+          
